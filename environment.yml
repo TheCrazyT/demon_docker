@@ -1,0 +1,22 @@
+name: demon
+channels:
+  - rapidsai
+  - pytorch
+  - nvidia
+  - conda-forge
+  - defaults
+dependencies:
+  - python=3.6
+  - tensorboard=1.14
+  - tensorflow=1.14
+  - tensorflow-estimator=1.14
+  - tensorflow-gpu=1.14
+  - opencv
+  - pillow
+  - matplotlib
+  - Cython
+  - ipykernel
+  - cudatoolkit
+  - cudatoolkit-dev
+  - libprotobuf=3.7.0
+prefix: /opt/conda/envs/demon
