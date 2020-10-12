@@ -11,4 +11,9 @@ mkdir build
 cd build
 cmake -DCMAKE_BUILD_TYPE=Release -UCMAKE_CXX_STANDARD -DCMAKE_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" -DTENSORFLOW_INCLUDE_DIR=/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow/include -DTENSORFLOW_FRAMEWORK_LIB=/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow/libtensorflow_framework.so.1 -DPYTHON_EXECUTABLE=/usr/local/envs/demon/bin/python3.6 ..
 make clean
-make VERBOSE=1 -j 8
+if [ "$CORES" != "" ]
+then
+	make VERBOSE=1 -j $CORES
+else
+	make VERBOSE=1
+fi

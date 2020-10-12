@@ -18,7 +18,7 @@ RUN bash /build_lmspecialops.sh
 ADD build_multivih5datareader.sh /
 RUN bash /build_multivih5datareader.sh
 RUN git clone --depth=1 https://github.com/lmb-freiburg/tfutils.git
-RUN source /usr/local/etc/profile.d/conda.sh && conda activate tf-upg && tf_upgrade_v2 --intree /tfutils --inplace
+RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate tf-upg && tf_upgrade_v2 --intree /tfutils --inplace'
 #Test it
-RUN LMBSPECIALOPS_LIB=/demon_v2/lmbspecialops/build/lib/lmbspecialops.so PYTHONPATH=$PYTHONPATH:/tfutils/python/tfutils:/tfutils/python:/demon_v2/lmbspecialops/python:/demon_v2/python/depthmotionnet/v2:/demon_v2/python LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow python -c "import lmbspecialops"
+RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && LMBSPECIALOPS_LIB=/demon_v2/lmbspecialops/build/lib/lmbspecialops.so PYTHONPATH=$PYTHONPATH:/tfutils/python/tfutils:/tfutils/python:/demon_v2/lmbspecialops/python:/demon_v2/python/depthmotionnet/v2:/demon_v2/python LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow python -c "import lmbspecialops"'
 ENTRYPOINT /bin/bash
