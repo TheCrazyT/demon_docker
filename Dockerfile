@@ -23,4 +23,6 @@ RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate tf-upg &
 RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && LMBSPECIALOPS_LIB=/demon_v2/lmbspecialops/build/lib/lmbspecialops.so PYTHONPATH=$PYTHONPATH:/tfutils/python/tfutils:/tfutils/python:/demon_v2/lmbspecialops/python:/demon_v2/python/depthmotionnet/v2:/demon_v2/python LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow python -c "import lmbspecialops"'
 ENV PYTHONPATH=:/demon_v2/python/:/demon_v2/lmbspecialops/python:/tfutils/python
 ENV MULTIVIH5DATAREADEROP_LIB=/demon_v2/build/multivih5datareaderop/multivih5datareaderop.so
+RUN apt install python3-pip
+RUN python3 -m pip install jupyterlab
 ENTRYPOINT /bin/bash
