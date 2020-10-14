@@ -25,4 +25,5 @@ ENV PYTHONPATH=:/demon_v2/python/:/demon_v2/lmbspecialops/python:/tfutils/python
 ENV MULTIVIH5DATAREADEROP_LIB=/demon_v2/build/multivih5datareaderop/multivih5datareaderop.so
 RUN apt install -y python3-pip
 RUN python3 -m pip install jupyterlab
+EXPOSE 8888
 ENTRYPOINT /bin/bash
