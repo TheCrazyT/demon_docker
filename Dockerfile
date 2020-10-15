@@ -26,4 +26,4 @@ ENV MULTIVIH5DATAREADEROP_LIB=/demon_v2/build/multivih5datareaderop/multivih5dat
 RUN apt install -y python3-pip
 RUN python3 -m pip install jupyterlab
 EXPOSE 8888
-ENTRYPOINT /bin/bash
+CMD jupyter-lab --ip="*" --no-browser --allow-root
