@@ -6,17 +6,14 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - cmake>=3.8
   - python=3.6
-  - tensorboard=1.14
-  - tensorflow=1.14
-  - tensorflow-estimator=1.14
-  - tensorflow-gpu=1.14
-  - opencv
+  - tensorboard
+  - tensorflow-gpu[version='>=1.13.1,<1.15.0']
+  - libopencv=4.2.0
   - pillow
   - matplotlib
   - Cython
   - ipykernel
-  - cudatoolkit
-  - cudatoolkit-dev
   - libprotobuf=3.7.0
 prefix: /opt/conda/envs/demon
