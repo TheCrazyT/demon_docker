@@ -8,9 +8,6 @@ channels:
 dependencies:
   - cmake>=3.8
   - python=3.6
-  - tensorboard
-  - tensorflow-gpu[version='>=1.13.1,<1.15.0']
-  - libopencv=4.2.0
   - pillow
   - matplotlib
   - Cython
