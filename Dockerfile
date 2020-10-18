@@ -30,5 +30,7 @@ ENV MULTIVIH5DATAREADEROP_LIB=/demon_v2/build/multivih5datareaderop/multivih5dat
 ENV WANDB_MODE=dryrun
 RUN apt install -y python3-pip
 RUN python3 -m pip install jupyterlab
+RUN ln -s /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1 /usr/lib/x86_64-linux-gnu/libnvidia-ml.so
+RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && pip install wandb
 EXPOSE 8888
 CMD jupyter-lab --ip="*" --no-browser --allow-root

@@ -10,5 +10,7 @@ git checkout master
 git status
 python3 -m pip install --upgrade keyrings.alt
 rm -Rf demon_v2 2>/dev/null
+conda activate demon
+pip install tensorflow-gpu==1.14.0
 conda activate tf-upg
 tf_upgrade_v2 --intree $DEMON_DIR --outtree $DEMON_DIR2 --reportfile report.txt
