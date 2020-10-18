@@ -32,5 +32,6 @@ RUN apt install -y python3-pip
 RUN python3 -m pip install jupyterlab
 RUN ln -s /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1 /usr/lib/x86_64-linux-gnu/libnvidia-ml.so
 RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && pip install wandb
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y nvidia-450 || true
 EXPOSE 8888
 CMD jupyter-lab --ip="*" --no-browser --allow-root
