@@ -18,14 +18,14 @@ pip install tensorflow-gpu==1.14.0
 
 cd /
 # Install minimal prerequisites (Ubuntu 18.04 as reference)
-apt update && apt install -y wget unzip
+apt update && apt install -y wget unzip pkg-config libzstd1
 # Download and unpack sources
-wget -O opencv.zip https://github.com/opencv/opencv/archive/master.zip
+wget -O opencv.zip https://github.com/opencv/opencv/archive/3.3.1.zip
 unzip opencv.zip
 # Create build directory
 mkdir -p opencv_build && cd opencv_build
 # Configure
-cmake  ../opencv-master
+cmake  ../opencv-3.3.1
 # Build
 cmake --build .
 make install
