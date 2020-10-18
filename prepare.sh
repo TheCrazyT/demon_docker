@@ -25,7 +25,7 @@ unzip opencv.zip
 # Create build directory
 mkdir -p opencv_build && cd opencv_build
 # Configure
-cmake  ../opencv-3.3.1
+cmake -DCUDA_ARCH_LIST="7.0" ../opencv-3.3.1
 # Build
 cmake --build .
 make install
