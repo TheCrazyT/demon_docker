@@ -13,8 +13,7 @@ rm -Rf demon_v2 2>/dev/null
 conda activate demon
 
 #tensorflow-gpu from conda-forge won't work (detects no gpu)
-pip install tensorflow-gpu==1.14.0
-
+pip install tensorflow-gpu==1.4.0
 
 cd /
 # Install minimal prerequisites (Ubuntu 18.04 as reference)
@@ -30,7 +29,7 @@ cmake -DCUDA_ARCH_LIST="7.0" ../opencv-3.3.1
 cmake --build .
 make install
 cd /
+rm opencv.zip
+rm -Rf opencv-3.3.1
 
-conda activate tf-upg
-tf_upgrade_v2 --intree $DEMON_DIR --outtree $DEMON_DIR2 --reportfile report.txt
 
