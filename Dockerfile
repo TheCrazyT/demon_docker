@@ -1,7 +1,7 @@
 FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
 RUN apt update && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y python3 cmake git g++ g++-5 gcc-5
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y python3 cmake git g++ g++-5 gcc-5 g++-4.9 gcc-4.9
 RUN apt install wget
 ENV MINICONDA_INSTALLER_SCRIPT=Miniconda3-latest-Linux-x86_64.sh
 ENV MINICONDA_PREFIX=/usr/local
