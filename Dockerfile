@@ -1,6 +1,7 @@
 FROM crazyt/demon:base
 ADD prepare.sh /
 RUN bash /prepare.sh
+RUN apt-get update && apt-get install -y gcc-4.9 g++-4.9
 ADD build_lmspecialops.sh /
 RUN bash /build_lmspecialops.sh
 ADD build_multivih5datareader.sh /
