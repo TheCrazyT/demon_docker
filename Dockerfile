@@ -1,4 +1,4 @@
-FROM nvidia/cuda:8.0-cudnn6-devel-ubuntu16.04
+FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 RUN apt update && apt-get install -y software-properties-common
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt install -y python3 cmake git g++ g++-5 gcc-5 g++-4.9 gcc-4.9
