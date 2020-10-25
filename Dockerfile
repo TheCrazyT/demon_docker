@@ -1,5 +1,5 @@
 FROM crazyt/demon:base
-ENV CUDA_DIR_NAME=cuda-9.0
+ENV CUDA_DIR_NAME=cuda-10.0
 ADD prepare.sh /
 RUN bash /prepare.sh
 RUN apt-get update && apt-get install -y gcc-4.9 g++-4.9
