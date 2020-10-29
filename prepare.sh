@@ -29,13 +29,6 @@ fi
 rm -Rf demon_v2 2>/dev/null
 conda activate demon
 
-#tensorflow-gpu from conda-forge won't work (detects no gpu)
-pip install tensorflow-gpu==1.14.0
-if [ "$?" != "0" ]
-then
-	exit 1
-fi
-
 cd /
 # Install minimal prerequisites (Ubuntu 18.04 as reference)
 apt update && apt install -y wget unzip pkg-config libzstd1
