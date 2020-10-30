@@ -2,15 +2,15 @@ FROM crazyt/demon:base
 ENV CUDA_DIR_NAME=cuda-10.0
 ADD prepare.sh /
 RUN bash /prepare.sh
-RUN apt-get update && apt-get install -y gcc-4.9 g++-4.9
 ADD build_lmspecialops.sh /
 RUN bash /build_lmspecialops.sh
 RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && conda install h5py'
 ADD build_multivih5datareader.sh /
 RUN bash /build_multivih5datareader.sh
+RUN bash -c '/usr/bin/python -m pip show tensorflow' && /bin/false
 #Test import
-RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && LD_LIBRARY_PATH=/usr/local/$CUDA_DIR_NAME/targets/x86_64-linux/lib/stubs/ LMBSPECIALOPS_LIB=/demon_v2/lmbspecialops/build/lib/lmbspecialops.so PYTHONPATH=$PYTHONPATH:/tfutils/python/tfutils:/tfutils/python:/demon_v2/lmbspecialops/python:/demon_v2/python/depthmotionnet/v2:/demon_v2/python LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow python -c "import lmbspecialops"'
-RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && LD_LIBRARY_PATH=/usr/local/$CUDA_DIR_NAME/targets/x86_64-linux/lib/stubs/ MULTIVIH5DATAREADEROP_LIB=/demon_v2/build/multivih5datareaderop/multivih5datareaderop.so PYTHONPATH=/demon_v2/python/depthmotionnet python -c "import datareader"'
+RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && LD_LIBRARY_PATH=/usr/local/$CUDA_DIR_NAME/targets/x86_64-linux/lib/stubs/:/usr/local/lib/python3.6/dist-packages/tensorflow LMBSPECIALOPS_LIB=/demon_v2/lmbspecialops/build/lib/lmbspecialops.so PYTHONPATH=$PYTHONPATH:/tfutils/python/tfutils:/tfutils/python:/demon_v2/lmbspecialops/python:/demon_v2/python/depthmotionnet/v2:/demon_v2/python python3 -c "import lmbspecialops"'
+RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && LD_LIBRARY_PATH=/usr/local/$CUDA_DIR_NAME/targets/x86_64-linux/lib/stubs/ MULTIVIH5DATAREADEROP_LIB=/demon_v2/build/multivih5datareaderop/multivih5datareaderop.so PYTHONPATH=/demon_v2/python/depthmotionnet python3 -c "import datareader"'
 ENV PYTHONPATH=:/demon_v2/python/:/demon_v2/lmbspecialops/python:/tfutils/python
 ENV LMBSPECIALOPS_LIB=/demon_v2/lmbspecialops/build/lib/lmbspecialops.so
 ENV MULTIVIH5DATAREADEROP_LIB=/demon_v2/build/multivih5datareaderop/multivih5datareaderop.so
