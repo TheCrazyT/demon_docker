@@ -31,7 +31,12 @@ conda activate demon
 
 cd /
 # Install minimal prerequisites (Ubuntu 18.04 as reference)
-apt update && apt install -y wget unzip pkg-config libzstd1
+apt update
+if [ "$?" != "0" ]
+then
+	exit 1
+fi
+apt install -y wget unzip pkg-config libzstd1
 if [ "$?" != "0" ]
 then
 	exit 1
@@ -72,4 +77,8 @@ cd /
 rm opencv.zip
 rm -Rf opencv-3.3.1
 rm -Rf opencv_build
-
+apt remove -y wget unzip pkg-config libzstd1
+if [ "$?" != "0" ]
+then
+	exit 1
+fi
