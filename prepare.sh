@@ -1,4 +1,12 @@
 #!/bin/bash
+
+apt-get update
+apt-get install -y git wget unzip pkg-config libzstd1
+if [ "$?" != "0" ]
+then
+	exit 1
+fi
+
 DEMON_DIR=$PWD/demon
 DEMON_DIR2=$PWD/demon_v2
 source /usr/local/etc/profile.d/conda.sh
@@ -36,11 +44,6 @@ if [ "$?" != "0" ]
 then
 	exit 1
 fi
-apt install -y wget unzip pkg-config libzstd1
-if [ "$?" != "0" ]
-then
-	exit 1
-fi
 # Download and unpack sources
 wget -O opencv.zip https://github.com/opencv/opencv/archive/3.3.1.zip
 if [ "$?" != "0" ]
@@ -71,13 +74,19 @@ fi
 make install
 if [ "$?" != "0" ]
 then
+	echo opencv install failed
 	exit 1
 fi
 cd /
 rm opencv.zip
 rm -Rf opencv-3.3.1
 rm -Rf opencv_build
-apt remove -y wget unzip pkg-config libzstd1
+#apt remove -y git wget unzip pkg-config libzstd1
+#if [ "$?" != "0" ]
+#then
+#	exit 1
+#fi
+apt remove -y git wget
 if [ "$?" != "0" ]
 then
 	exit 1
