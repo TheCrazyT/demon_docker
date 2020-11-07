@@ -22,11 +22,16 @@ rm -Rf build > /dev/null
 mkdir build
 cd build
 #cmake -DCMAKE_BUILD_TYPE=Release -UCMAKE_CXX_STANDARD -DCMAKE_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" -DTENSORFLOW_INCLUDE_DIR=/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow/include -DTENSORFLOW_FRAMEWORK_LIB=/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow/libtensorflow_framework.so.1 -DPYTHON_EXECUTABLE=/usr/local/envs/demon/bin/python3.6 ..
-LD_LIBRARY_PATH=/usr/local/$CUDA_DIR_NAME/targets/x86_64-linux/lib/stubs/ cmake -DCMAKE_BUILD_TYPE=Release -UCMAKE_CXX_STANDARD -DCMAKE_C_FLAGS="-I/usr/local/include" -DCMAKE_CXX_FLAGS="-I/usr/local/include -D_GLIBCXX_USE_CXX11_ABI=0" -DTENSORFLOW_INCLUDE_DIR=/usr/local/lib/python3.6/dist-packages/tensorflow/include -DTENSORFLOW_FRAMEWORK_LIB=/usr/local/lib/python3.6/dist-packages/tensorflow/libtensorflow_framework.so -DPYTHON_EXECUTABLE=/usr/bin/python3.6 ..
+LD_LIBRARY_PATH=/usr/local/$CUDA_DIR_NAME/targets/x86_64-linux/lib/stubs/ cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_C_COMPILER=/usr/bin/gcc-4.8 -DCMAKE_CXX_COMPILER=/usr/bin/g++-4.8 -UCMAKE_CXX_STANDARD -DCMAKE_C_FLAGS="-I/usr/local/include" -DCMAKE_CXX_FLAGS="-I/usr/local/include -D_GLIBCXX_USE_CXX11_ABI=0" -DTENSORFLOW_INCLUDE_DIR=/usr/local/lib/python3.6/dist-packages/tensorflow/include -DTENSORFLOW_FRAMEWORK_LIB=/usr/local/lib/python3.6/dist-packages/tensorflow/libtensorflow_framework.so -DPYTHON_EXECUTABLE=/usr/bin/python3.6 ..
 if [ "$?" != "0" ]
 then
 	exit 1
 fi
+
+sed -i s/40900/40800/ /demon_v2/build/json_for_modern_cpp/json.hpp
+sed -i 's/inline half operator""/\/\/inline half operator""/' /demon_v2/build/half/include/half.hpp
+sed -i 's/half operator""/\/\/half operator""/' /demon_v2/build/half/include/half.hpp
+sed -i 's/friend half literal::operator""/\/\/friend half literal::operator""/' /demon_v2/build/half/include/half.hpp
 
 make clean
 if [ "$CORES" != "" ]

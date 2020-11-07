@@ -23,6 +23,7 @@ RUN python3 -m pip install wandb
 RUN ln -s /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1 /usr/lib/x86_64-linux-gnu/libnvidia-ml.so
 RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && pip install wandb'
 RUN rm /usr/local/bin/python && ln -s /usr/bin/python3 /usr/local/bin/python
+RUN sed  -i "s/bin\/python/bin\/python3/" /usr/local/bin/conda
 
 EXPOSE 8888
 CMD jupyter-lab --ip="*" --no-browser --allow-root
