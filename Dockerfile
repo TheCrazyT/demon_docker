@@ -1,6 +1,6 @@
 FROM paperspace/dl-containers:tensorflow1140-py36-cu100-cdnn7-jupyter
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
-RUN apt update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends software-properties-common cmake g++ g++-5 gcc-5 g++-7 gcc-7
+RUN apt update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends software-properties-common cmake g++ g++-4.8 gcc-4.8 g++-5 gcc-5 g++-7 gcc-7
 ENV MINICONDA_INSTALLER_SCRIPT=Miniconda3-latest-Linux-x86_64.sh
 ENV MINICONDA_PREFIX=/usr/local
 ADD environment.yml /
