@@ -1,4 +1,4 @@
-FROM paperspace/dl-containers:tensorflow1140-py36-cu100-cdnn7-jupyter
+FROM paperspace/dl-containers:2.0.0-gpu-py3-jupyter-lab-scipy-pillow
 RUN add-apt-repository ppa:ubuntu-toolchain-r/test
 RUN apt update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends software-properties-common cmake g++ g++-4.8 gcc-4.8 g++-5 gcc-5 g++-7 gcc-7
 ENV MINICONDA_INSTALLER_SCRIPT=Miniconda3-latest-Linux-x86_64.sh
