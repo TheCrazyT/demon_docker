@@ -7,8 +7,6 @@ cd /demon_v2/lmbspecialops/build
 echo pip show tensorflow
 pip show tensorflow
 
-echo '#########find / -name "libcublas*.so*"###########'
-find / -name "libcublas*.so*"
 
 
 #cmake -DCMAKE_C_COMPILER=/usr/bin/gcc-7 -DCMAKE_CXX_COMPILER=/usr/bin/g++-7 -DTENSORFLOW_INCLUDE_DIR=/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow/include -DTENSORFLOW_FRAMEWORK_LIB=/usr/local/envs/demon/lib/python3.6/site-packages/tensorflow/libtensorflow_framework.so.1 -DCUDA_ARCH_LIST="7.0" -DCMAKE_LINK_WHAT_YOU_USE=1 -UCMAKE_CXX_STANDARD -DCMAKE_CXX_FLAGS="-D_GLIBCXX_USE_CXX11_ABI=0" -DPYTHON_EXECUTABLE=/usr/local/envs/demon/bin/python3.6 ..
