@@ -1,10 +1,10 @@
-FROM crazyt/demon:base
+FROM crazyt/demon:base_tf2
 ENV CUDA_DIR_NAME=cuda-10.0
 ADD prepare.sh /
 RUN bash /prepare.sh
 ADD build_lmspecialops.sh /
 RUN bash /build_lmspecialops.sh && find /demon_v2/lmbspecialops/build ! -name 'lmbspecialops.so' -type f -exec rm -f {} +
-RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && conda install h5py'
+RUN pip install h5py
 ADD build_multivih5datareader.sh /
 RUN bash /build_multivih5datareader.sh \
 	&& find /demon_v2/build ! -name 'multivih5datareaderop.so' -type f -exec rm -f {} +
@@ -21,9 +21,7 @@ ENV WANDB_MODE=dryrun
 RUN apt install -y python3-pip
 RUN python3 -m pip install wandb
 RUN ln -s /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1 /usr/lib/x86_64-linux-gnu/libnvidia-ml.so
-RUN bash -c 'source /usr/local/etc/profile.d/conda.sh && conda activate demon && pip install wandb'
-RUN rm /usr/local/bin/python && ln -s /usr/bin/python3 /usr/local/bin/python
-RUN sed  -i "s/bin\/python/bin\/python3/" /usr/local/bin/conda
+RUN pip install wandb
 
 EXPOSE 8888
 CMD jupyter-lab --ip="*" --no-browser --allow-root

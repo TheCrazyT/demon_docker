@@ -1,7 +1,5 @@
 #!/bin/bash
-source /usr/local/etc/profile.d/conda.sh
-conda activate demon
-
+cd /
 
 echo '######find -name "Dense"'
 find / -name "Dense"
