@@ -22,6 +22,8 @@ RUN apt install -y python3-pip
 RUN python3 -m pip install wandb
 RUN ln -s /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.1 /usr/lib/x86_64-linux-gnu/libnvidia-ml.so
 RUN pip install wandb
+RUN sed -i s/tf.contrib.layers.flatten/tf.compat.v1.layers.flatten/g /demon_v2/python/depthmotionnet/blocks_original.py \
+	&& sed -i s/tf.contrib.layers.flatten/tf.compat.v1.layers.flatten/g /demon_v2/python/depthmotionnet/v2/blocks.py
 
 EXPOSE 8888
 CMD jupyter-lab --ip="*" --no-browser --allow-root
